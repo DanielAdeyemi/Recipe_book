@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace RecipeBook.Models
 {
-  public class ApplicationUser
+  public class ApplicationUser : IdentityUser
   {
     
   }
