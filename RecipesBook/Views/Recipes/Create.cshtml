@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBook.Models.Recipe
+
+<h3>Add recipe</h3>
+
+@using (Html.BeginForm())
+{
+  @Html.Label("Recipe Name")
+  @Html.TextBoxFor(model=>model.RecipeName)
+  @Html.Label("Instructions")
+  @Html.TextAreaFor(model=>model.RecipeDescription)
+  @Html.Label("Tag for a recipe")
+  @Html.DropDownList("TagId", (SelectList)ViewBag.MyList, "You can select tag or add it later", new { @class = "form-control"})
+
+  <button type="submit" class="btn btn-success">Add new recipe</button>
+}
+
+<button class="btn btn-dark">@Html.ActionLink("Show all recipies", "Index")</button>
