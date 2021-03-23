@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecipeBook.Models;
 
-namespace Recipe.Migrations
+namespace RecipeBook.Migrations
 {
     [DbContext(typeof(RecipeBookContext))]
     partial class RecipeBookContextModelSnapshot : ModelSnapshot

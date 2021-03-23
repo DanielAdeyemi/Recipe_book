@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecipeBook.Models;
 
-namespace Recipe.Migrations
+namespace RecipeBook.Migrations
 {
     [DbContext(typeof(RecipeBookContext))]
     [Migration("20210323182138_Initial")]
