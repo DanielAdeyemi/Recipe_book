@@ -35,5 +35,21 @@ namespace RecipeBook.Controllers
       ViewBag.TagId = new SelectList(_db.Tags, "TagId", "TagDescription");
       return View();
     }
+
+    [HttpPost]
+    public async Task<ActionResult> Create(Recipe recipe, int TagId)
+    {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      recipe.User = currentUser;
+      _db.Recipes.Add(recipe);
+      _db.SaveChanges();
+      if(TagId !=0)
+      {
+        _db.RecipeTag.Add(new RecipeTag() { RecipeId = recipe.RecipeId, TagId = TagId});
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
