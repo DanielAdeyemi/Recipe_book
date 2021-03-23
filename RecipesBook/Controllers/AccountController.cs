@@ -44,5 +44,10 @@ namespace RecipeBook.Controllers
         return View();
       }
     }
+
+    public ActionResult Login()
+    {
+      return View();
+    }
   }
 }
