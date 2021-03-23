@@ -13,7 +13,7 @@ namespace RecipeBook.Models
     public string RecipeDescription { get; set; }
     public string RecipeInstructions { get; set; }
     public float RecipeRaiting { get; set; }
-    public virtual ApplicationUser { get; set; }
-    public virtual ICollection<RecipeTag> JoinEntities { get; }
+    public virtual ApplicationUser User { get; set; }
+    public virtual ICollection<RecipeTag> JoinEntities { get; set; }
   }
 }
