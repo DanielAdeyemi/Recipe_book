@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBook.Models.Tag
+
+<h3>Edit this tag</h3>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model=>model.TagId)
+  @Html.Label("New tag name: ")
+  @Html.EditorFor(model => model.TagDescription)
+  <input type="submit" value="Change it" class="btn btn-primary">
+}
+
+
+<button class="btn btn-dark">@Html.ActionLink("Back to the list of tags", "Index")</button>
+<button class="btn btn-danger">@Html.ActionLink("Delete this tag", "Delete", new { id = Model.TagId})</button>
