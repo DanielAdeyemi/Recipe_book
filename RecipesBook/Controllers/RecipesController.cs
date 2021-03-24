@@ -58,5 +58,16 @@ namespace RecipeBook.Controllers
       ViewBag.TagId = new SelectList(_db.Tags, "TagId", "TagDescription");
       return View(thisRecipe);
     }
+
+    [HttpPost]
+    public ActionResult AddTag(Recipe recipe, int TagId)
+    {
+      if (TagId != 0)
+      {
+        _db.RecipeTag.Add(new RecipeTag() {TagId = TagId, RecipeId = recipe.RecipeId});
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
