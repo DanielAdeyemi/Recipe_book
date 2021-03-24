@@ -29,5 +29,10 @@ namespace RecipeBook.Controllers
       var userTags = _db.Tags.Where(entry => entry.User.Id == currentUser.Id).ToList();
       return View(userTags);
     }
+    public ActionResult Create()
+    {
+      ViewBag.RecipeId = new SelectList(_db.Recipes, "RecipeId", "RecipeName");
+      return View();
+    }
   }
 }
