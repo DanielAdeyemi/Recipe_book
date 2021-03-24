@@ -81,5 +81,13 @@ namespace RecipeBook.Controllers
       var thisTag = _db.Tags.FirstOrDefault(tag =>tag.TagId == id);
       return View(thisTag);
     }
+
+    [HttpPost]
+    public ActionResult Edit(Tag tag)
+    {
+      _db.Entry(tag).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
