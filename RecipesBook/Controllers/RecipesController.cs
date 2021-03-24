@@ -52,6 +52,15 @@ namespace RecipeBook.Controllers
       return RedirectToAction("Index");
     }
 
+    public ActionResult Details(int id)
+    {
+      var thisRecipe = _db.Recipes
+        .Include(recipe =>recipe.JoinEntities)
+        .ThenInclude(join => join.Tag)
+        .FirstOrDefault(recipe =>recipe.RecipeId == id);
+      return View(thisRecipe);
+    }
+    
     public ActionResult AddTag(int id)
     {
       var thisRecipe = _db.Recipes.FirstOrDefault(recipe =>recipe.RecipeId == id);
