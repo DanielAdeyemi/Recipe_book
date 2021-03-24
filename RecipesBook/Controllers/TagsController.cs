@@ -75,5 +75,11 @@ namespace RecipeBook.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult Edit(int id)
+    {
+      var thisTag = _db.Tags.FirstOrDefault(tag =>tag.TagId == id);
+      return View(thisTag);
+    }
   }
 }
