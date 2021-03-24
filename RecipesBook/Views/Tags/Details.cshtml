@@ -23,7 +23,7 @@ else
       @using (Html.BeginForm("DeleteRecipe", "Recipes"))
       {
         @Html.Hidden("joinId", @join.RecipeTagId)
-        <input type="button submit" value="Delete this recipe" class="btn btn-danger">
+        <input type="submit" value="Delete this recipe" class="btn btn-danger">
       }
     }
   </ul>
