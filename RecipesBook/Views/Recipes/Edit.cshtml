@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBook.Models.Recipe
+
+<h3>Edit this recipe</h3>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model=>model.RecipeId)
+  @Html.Label("Alter recipe name: ")
+  @Html.EditorFor(model => model.RecipeName)
+  @Html.Label("Update instructions: ")
+  @Html.EditorFor(model =>model.RecipeInstructions);
+  <input type="submit" value="Change it" class="btn btn-primary">
+}
+
+
+<button class="btn btn-dark">@Html.ActionLink("Back to the list of recipes", "Index")</button>
+<button class="btn btn-danger">@Html.ActionLink("Delete this recipe", "Delete", new { id = Model.RecipeId})</button>
