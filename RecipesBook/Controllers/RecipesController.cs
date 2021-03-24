@@ -93,5 +93,11 @@ namespace RecipeBook.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult Delete(int id)
+    {
+      var thisRecipe = _db.Recipes.FirstOrDefault(recipe=>recipe.RecipeId == id);
+      return View(thisRecipe);
+    }
   }
 }
