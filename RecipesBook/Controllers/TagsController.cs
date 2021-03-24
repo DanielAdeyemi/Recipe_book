@@ -49,5 +49,31 @@ namespace RecipeBook.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+    public ActionResult Details(int id)
+    {
+      var thisTag = _db.Tags
+        .Include(tag => tag.JoinEntities)
+        .ThenInclude(join => join.Recipe)
+        .FirstOrDefault(tag => tag.TagId == id);
+      return View(thisTag);
+    }
+
+    public ActionResult AddRecipe(int id)
+    {
+      var thisTag = _db.Tags.FirstOrDefault(tag => tag.TagId == id);
+      ViewBag.RecipeId = new SelectList(_db.Recipes, "RecipeId", "RecipeName");
+      return View(thisTag);
+    }
+
+    [HttpPost]
+    public ActionResult AddRecipe(Tag tag, int RecipeId)
+    {
+      if (RecipeId != 0)
+      {
+        _db.RecipeTag.Add(new RecipeTag() { TagId = tag.TagId, RecipeId = RecipeId });
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
