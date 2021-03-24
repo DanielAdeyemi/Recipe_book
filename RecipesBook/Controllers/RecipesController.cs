@@ -99,5 +99,14 @@ namespace RecipeBook.Controllers
       var thisRecipe = _db.Recipes.FirstOrDefault(recipe=>recipe.RecipeId == id);
       return View(thisRecipe);
     }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisRecipe = _db.Recipes.FirstOrDefault(tag => tag.RecipeId == id);
+      _db.Recipes.Remove(thisRecipe);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
