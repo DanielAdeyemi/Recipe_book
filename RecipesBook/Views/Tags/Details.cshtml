@@ -30,6 +30,6 @@ else
 }
 
 <button class="btn btn-dark">@Html.ActionLink("Back to the list of tags", "Index")</button>
-<button class="btn btn-dark">@Html.ActionLink("Edit details for this tag", "Edit", new { id = Model.TagId})</button>
+<button class="btn btn-dark">@Html.ActionLink("Edit details and raitng for this tag", "Edit", new { id = Model.TagId})</button>
 <button class="btn btn-dark">@Html.ActionLink("Add recipe for this tag", "AddRecipe", new { id = Model.TagId})</button>
 <button class="btn btn-danger">@Html.ActionLink("Delete this tag", "Delete", new { id = Model.TagId})</button>
