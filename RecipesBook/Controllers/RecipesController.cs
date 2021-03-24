@@ -51,5 +51,12 @@ namespace RecipeBook.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult AddTag(int id)
+    {
+      var thisRecipe = _db.Recipes.FirstOrDefault(recipe =>recipe.RecipeId == id);
+      ViewBag.TagId = new SelectList(_db.Tags, "TagId", "TagDescription");
+      return View(thisRecipe);
+    }
   }
 }
