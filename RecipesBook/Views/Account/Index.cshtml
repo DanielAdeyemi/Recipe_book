@@ -9,9 +9,10 @@
 @if (User.Identity.IsAuthenticated)
 {
   <p>Hello @User.Identity.Name</p>
+      <button class="btn btn-white">@Html.ActionLink("To the recipies", "Index", "Recipes")</button>
+      <button class="btn btn-white">@Html.ActionLink("To the tags", "Index", "Tags")</button>
    @using (Html.BeginForm("LogOff", "Account"))
     {
-      <button class="btn btn-white">@Html.ActionLink("To the recipies", "Index", "Recipes")</button>
       <input type="submit" class="btn btn-dark" value="Log out" />
     }
 }

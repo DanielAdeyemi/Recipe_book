@@ -5,7 +5,7 @@
 @using RecipeBook.Models;
 @model IEnumerable<RecipeBook.Models.Tag>
 
-<h1>Items for @User.Identity.Name</h1>
+<h1>Tags for @User.Identity.Name</h1>
 
 @if (Model.Any())
 {
@@ -22,5 +22,6 @@ else
 }
 
 <p>@Html.ActionLink("Add new tag", "Create")</p>
+<p>@Html.ActionLink("Back to my account", "Index", "Account")</p>
 
 <p>@Html.ActionLink("Home", "Index", "Home")</p>
