@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBook.Models.Tag
+
+<h3>Tag's Details</h3>
+<hr />
+
+<h4>@Html.DisplayNameFor(model => model.TagDescription)</h4>
+
+@if (Model.JoinEntities.Count == 0)
+{
+  <p>This tag hasn't been attached to any recipe yet</p>
+}
+else
+{
+  <h4>Recipes for this tag:</h4>
+  <ul>
+    @foreach (var join in Model.JoinEntities)
+    {
+      <li>@join.Recipe.RecipeName</li>
+      @using (Html.BeginForm("DeleteRecipe", "Recipes"))
+      {
+        @Html.Hidden("joinId", @join.RecipeTagId)
+        <input type="button submit" value="Delete this recipe" class="btn btn-danger">
+      }
+    }
+  </ul>
+}
+
+<button class="btn btn-dark">@Html.ActionLink("Back to the list of tags", "Index")</button>
+<button class="btn btn-dark">@Html.ActionLink("Edit details for this tag", "Edit", new { id = Model.TagId})</button>
+<button class="btn btn-dark">@Html.ActionLink("Add recipe for this tag", "AddRecipe", new { id = Model.TagId})</button>
+<button class="btn btn-danger">@Html.ActionLink("Delete this tag", "Delete", new { id = Model.TagId})</button>
