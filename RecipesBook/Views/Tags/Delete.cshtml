@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBook.Models.Tag
+
+<h2>Are you sure you want to delete this Tag?</h2>
+
+@Html.DisplayNameFor(model => model.TagDescription): @Html.DisplayFor(model => model.TagDescription)
+@using (Html.BeginForm())
+{
+  <input class="btn btn-danger" type="submit" value="Delete" />
+}
+
+<button class="btn btn-danger">@Html.ActionLink("Back to List", "Index")</button>
