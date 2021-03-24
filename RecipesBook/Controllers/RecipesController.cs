@@ -84,5 +84,14 @@ namespace RecipeBook.Controllers
       var thisRecipe = _db.Recipes.FirstOrDefault(recipe => recipe.RecipeId == id);
       return View(thisRecipe);
     }
+
+
+    [HttpPost]
+    public ActionResult Edit(Recipe recipe)
+    {
+      _db.Entry(recipe).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
